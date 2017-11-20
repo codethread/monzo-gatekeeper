@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "setup": "ln -s ${PWD}/src ./node_modules/",
+    "debug": "DEBUG=my-namespace,express* npm run start",
     "start": "nodemon src/index.js --watch src --exec babel-node",
     "clean": "rm -rf ./node_modules/src",
     "test": "mocha $(find ./test -name '*-test.js')"
@@ -12,11 +13,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^2.3.0",
+    "debug": "^3.1.0",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "nodemon": "^1.12.1",
     "request": "^2.83.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "winston": "^3.0.0-rc1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

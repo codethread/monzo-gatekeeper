@@ -3,6 +3,7 @@ import requests from './requests/requests';
 
 const sendAwaitedData = async (request) => {
   try {
+    console.log(`requesting to ${request}`);
     const data = await requestsHandler({ url: request });
     return data;
   } catch (err) {
@@ -11,7 +12,8 @@ const sendAwaitedData = async (request) => {
 };
 
 export default {
-  noRouteFound({ path }) {
+  noRouteFound({ path, logger }) {
+    logger.log({ level: 'info', message: 'returning noRouteFound' });
     return { error: `v1 endpoint: ${path} does not exist` };
   },
   test() {
