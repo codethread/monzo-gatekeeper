@@ -1,34 +1,28 @@
-import requestsHandler from './requests/requestsHandler';
 import requests from './requests/requests';
+import connectionHelper from './connection-helper';
 
-const sendAwaitedData = async (request) => {
-  try {
-    console.log(`requesting to ${request}`);
-    const data = await requestsHandler({ url: request });
-    return data;
-  } catch (err) {
-    return err;
-  }
-};
-
-export default {
-  noRouteFound({ path, logger }) {
-    logger.log({ level: 'info', message: 'returning noRouteFound' });
+const api = {
+  noRouteFound({ path }) {
     return { error: `v1 endpoint: ${path} does not exist` };
   },
   test() {
     return { msg: 'gatekeeper v1 working' };
   },
+  authenticate() {
+    return connectionHelper({ request: requests.authenticate });
+  },
   whoami() {
-    return sendAwaitedData(requests.whoami);
+    return connectionHelper({ request: requests.whoami });
   },
   accounts() {
-    return sendAwaitedData(requests.accounts);
+    return connectionHelper({ request: requests.accounts });
   },
   balance() {
-    return sendAwaitedData(requests.balance);
+    return connectionHelper({ request: requests.balance });
   },
   transactions() {
-    return sendAwaitedData(requests.transactions);
+    return connectionHelper({ request: requests.transactions });
   },
 };
+
+export default api;

@@ -11,6 +11,5 @@ export default ({ url }) => {
     },
     json: true,
   };
-  console.log(`making request to: ${options.uri} \n with headers\n ${JSON.stringify(options.headers)}`);
   return requestPromise(options);
 };

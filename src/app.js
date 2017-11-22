@@ -10,7 +10,6 @@ app.get('/', (req, res) => res.send({ error: 'please provide an api string' }));
 app.get('/v1/*', async (req, res) => {
   const params = {
     path: req.path.slice(4),
-    logger: setup.logger,
   };
 
   const api = v1Api[params.path] || v1Api.noRouteFound;
