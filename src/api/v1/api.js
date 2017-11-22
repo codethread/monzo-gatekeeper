@@ -37,6 +37,10 @@ const api = {
     const response = await connectionHelper({ request: requests.transactions });
     return resolvers.transactions(response);
   },
+  transactionById: async () => {
+    const response = await connectionHelper({ request: requests.transactionById });
+    return resolvers.transactionById(response);
+  },
 };
 
 export default api;

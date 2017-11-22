@@ -2,6 +2,7 @@ import whoami from './whoami';
 import balance from './balance';
 import balanceCurrent from './balanceCurrent';
 import spentToday from './spentToday';
+import transactionById from './transactionById';
 
 export default {
   authenticate(data) {
@@ -17,4 +18,5 @@ export default {
   transactions(data) {
     return data;
   },
+  transactionById,
 };
