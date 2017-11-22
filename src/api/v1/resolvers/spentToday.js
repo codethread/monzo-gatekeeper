@@ -1,16 +1,11 @@
-const happyPath = (data) => {
-  return { spentToday: data.spend_today };
-};
+import statusResolver from 'src/api/v1/statusResolver';
 
 const spentToday = ({ data, status }) => {
-  switch (status) {
-    case 200:
-      return happyPath(data);
-    case 401:
-      return { err: 'unauthorized.bad_access_token' };
-    default:
-      return { err: 'unknown' };
+  if (status !== 200) {
+    return statusResolver({ status });
   }
+
+  return { spentToday: data.spend_today };
 };
 
 export default spentToday;
