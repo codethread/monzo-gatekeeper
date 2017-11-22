@@ -1,4 +1,5 @@
 import requests from './requests/requests';
+import resolvers from './resolvers/_index';
 import connectionHelper from './connection-helper';
 
 const api = {
@@ -8,20 +9,25 @@ const api = {
   test() {
     return { msg: 'gatekeeper v1 working' };
   },
-  authenticate() {
-    return connectionHelper({ request: requests.authenticate });
+  authenticate: async () => {
+    const response = await connectionHelper({ request: requests.authenticate });
+    return resolvers.authenticate(response);
   },
-  whoami() {
-    return connectionHelper({ request: requests.whoami });
+  whoami: async () => {
+    const response = await connectionHelper({ request: requests.whoami });
+    return resolvers.whoami(response);
   },
-  accounts() {
-    return connectionHelper({ request: requests.accounts });
+  accounts: async () => {
+    const response = await connectionHelper({ request: requests.accounts });
+    return resolvers.accounts(response);
   },
-  balance() {
-    return connectionHelper({ request: requests.balance });
+  balance: async () => {
+    const response = await connectionHelper({ request: requests.balance });
+    return resolvers.balance(response);
   },
-  transactions() {
-    return connectionHelper({ request: requests.transactions });
+  transactions: async () => {
+    const response = await connectionHelper({ request: requests.transactions });
+    return resolvers.transactions(response);
   },
 };
 

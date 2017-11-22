@@ -1,8 +1,8 @@
 import constants from './constants';
 
 export default {
-  transactions: `transactions?account_id=${constants.ACCOUNT_ID}&limit=10`,
-  accounts: 'accounts',
-  balance: `balance?account_id=${constants.ACCOUNT_ID}`,
-  whoami: 'ping/whoami',
+  transactions: { request: `transactions?account_id=${constants.ACCOUNT_ID}&limit=10`, safeLog: 'transactions?account_id=ACCOUNT_ID&limit=10' },
+  accounts: { request: 'accounts', safeLog: 'accounts' },
+  balance: { request: `balance?account_id=${constants.ACCOUNT_ID}`, safeLog: 'balance?account_id=ACCOUNT_ID' },
+  whoami: { request: 'ping/whoami', safeLog: 'ping/whoami' },
 };
