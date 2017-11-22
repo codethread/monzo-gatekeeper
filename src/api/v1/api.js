@@ -1,5 +1,5 @@
 import requests from './requests/requests';
-import resolvers from './resolvers/_index';
+import resolvers from './resolvers';
 import connectionHelper from './connection-helper';
 
 const api = {
@@ -24,6 +24,14 @@ const api = {
   balance: async () => {
     const response = await connectionHelper({ request: requests.balance });
     return resolvers.balance(response);
+  },
+  balanceCurrent: async () => {
+    const response = await connectionHelper({ request: requests.balance });
+    return resolvers.balanceCurrent(response);
+  },
+  spentToday: async () => {
+    const response = await connectionHelper({ request: requests.balance });
+    return resolvers.spentToday(response);
   },
   transactions: async () => {
     const response = await connectionHelper({ request: requests.transactions });
