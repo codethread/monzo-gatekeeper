@@ -8,6 +8,7 @@
     "debug": "DEBUG=my-namespace,express* npm run start",
     "start": "nodemon src/index.js --watch src --exec babel-node",
     "clean": "rm -rf ./node_modules/src",
+    "lint-fix": "node_modules/.bin/eslint --fix .",
     "test": "mocha $(find ./test -name '*-test.js')"
   },
   "author": "",

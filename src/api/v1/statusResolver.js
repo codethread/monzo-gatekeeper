@@ -1,14 +1,14 @@
 const statusResolver = ({ status }) => {
-  switch (status) {
+    switch (status) {
     case 401:
-      return { err: 'unauthorized.bad_access_token' };
+        return { err: 'unauthorized.bad_access_token' };
     case 404:
-      return { err: 'moved' };
+        return { err: 'moved' };
     case 500:
-      return { err: 'apiDown' };
+        return { err: 'apiDown' };
     default:
-      return { err: 'unknown' };
-  }
+        return { err: 'unknown' };
+    }
 };
 
 export default statusResolver;
