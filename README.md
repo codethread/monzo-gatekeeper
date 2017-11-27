@@ -7,6 +7,16 @@ The goal of this app is to create a number of api's to get more granular details
 
 ## Use
 
+login to https://developers.monzo.com/api/playground
+put your `account_id` and `access_token`inside a `.env` as with the keys all caps:
+
+```
+ACCOUNT_ID=xxx
+ACCESS_TOKEN=xxx
+```
+
+Then run
+
 ```bash
 npm run setup #only needs to be run once and symlinks the src folder inside node_modules for easy paths
 npm i
