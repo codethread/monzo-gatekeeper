@@ -5,13 +5,22 @@ The main call of interest is `transactions` which can accept variables such as d
 
 The goal of this app is to create a number of api's to get more granular details about monzo transactions, in particular weekly target spending.
 
-# Structure
+## Use
+
+The src folder is symlinked inside the node_modules for easy path linking (i.e. 'src/path/to.file' instead of '../../../path')
+```
+npm run setup #only needs to be run once
+npm i
+npm start
+
+```
+
+## Structure
 
 app
-|
--- api
--- requests
--- resolvers
+- api
+- requests
+- resolvers
 
 On starting the app will pass any get requests through to the object within `api.js`.
 Any requests that do not match an object key will return a `${path} does not exist`.
