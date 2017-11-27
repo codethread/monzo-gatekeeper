@@ -18,10 +18,22 @@ ACCESS_TOKEN=xxx
 Then run
 
 ```bash
-npm run setup #only needs to be run once and symlinks the src folder inside node_modules for easy paths
-npm i
-npm start
+$ npm run setup #only needs to be run once and symlinks the src folder inside node_modules for easy paths
+$ npm i
+$ npm start
 ```
+
+This will start the app on the setup port. You can then curl the app, e.g
+
+```bash
+$ curl 'http://localhost:7000/test #{ "msg": "gatekeeper v1 working" }
+```
+
+All v1 requests must be sent as
+```
+weburl/v1/$your_request
+```
+for the list of the available endpoints, see `src/api/v1/api.js`
 
 ### WIP
 
