@@ -1,6 +1,7 @@
-import requests from './requests/requests';
+import connectionHelper from 'src/middleware/connection-helper';
+
+import requests from './requests';
 import resolvers from './resolvers';
-import connectionHelper from './connection-helper';
 
 const api = {
     noRouteFound({ path }) {
