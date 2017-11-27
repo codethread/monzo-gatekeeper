@@ -8,12 +8,14 @@ The goal of this app is to create a number of api's to get more granular details
 ## Use
 
 The src folder is symlinked inside the node_modules for easy path linking (i.e. 'src/path/to.file' instead of '../../../path')
-```
+```bash
 npm run setup #only needs to be run once
 npm i
 npm start
-
 ```
+
+### WIP
+
 
 ## Structure
 
