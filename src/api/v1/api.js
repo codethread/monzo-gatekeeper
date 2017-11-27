@@ -1,6 +1,13 @@
-import requests from './requests/requests';
+import connectionHelper from 'src/middleware/connection-helper';
+
 import resolvers from './resolvers';
-import connectionHelper from './connection-helper';
+import requests from './requests';
+
+const apiCall = async ({ request }, ctx) => {
+    const { path } = ctx;
+    const { data, status } = await connectionHelper({ request }, ctx);
+    return resolvers[path]({ data, status }, ctx);
+};
 
 const api = {
     noRouteFound({ path }) {
@@ -9,38 +16,14 @@ const api = {
     test() {
         return { msg: 'gatekeeper v1 working' };
     },
-    authenticate: async () => {
-        const response = await connectionHelper({ request: requests.authenticate });
-        return resolvers.authenticate(response);
-    },
-    whoami: async () => {
-        const response = await connectionHelper({ request: requests.whoami });
-        return resolvers.whoami(response);
-    },
-    accounts: async () => {
-        const response = await connectionHelper({ request: requests.accounts });
-        return resolvers.accounts(response);
-    },
-    balance: async () => {
-        const response = await connectionHelper({ request: requests.balance });
-        return resolvers.balance(response);
-    },
-    balanceCurrent: async () => {
-        const response = await connectionHelper({ request: requests.balance });
-        return resolvers.balanceCurrent(response);
-    },
-    spentToday: async () => {
-        const response = await connectionHelper({ request: requests.balance });
-        return resolvers.spentToday(response);
-    },
-    transactions: async () => {
-        const response = await connectionHelper({ request: requests.transactions });
-        return resolvers.transactions(response);
-    },
-    transactionById: async () => {
-        const response = await connectionHelper({ request: requests.transactionById });
-        return resolvers.transactionById(response);
-    },
+    authenticate: ctx => (apiCall({ request: requests.AUTHENTICATE }, ctx)),
+    whoami: ctx => (apiCall({ request: requests.WHOAMI }, ctx)),
+    accounts: ctx => (apiCall({ request: requests.ACCOUNTS }, ctx)),
+    balance: ctx => (apiCall({ request: requests.BALANCE }, ctx)),
+    balanceCurrent: ctx => (apiCall({ request: requests.BALANCE }, ctx)),
+    spentToday: ctx => (apiCall({ request: requests.BALANCE }, ctx)),
+    transactions: ctx => (apiCall({ request: requests.TRANSACTIONS }, ctx)),
+    transactionById: ctx => (apiCall({ request: requests.TRANSACTION_BY_ID }, ctx)),
 };
 
 export default api;

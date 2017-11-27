@@ -1,4 +1,4 @@
-import statusResolver from 'src/api/v1/statusResolver';
+import statusResolver from 'src/middleware/statusResolver';
 
 const balance = ({ data, status }) => {
     if (status !== 200) {

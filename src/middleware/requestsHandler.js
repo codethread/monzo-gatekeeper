@@ -1,15 +1,18 @@
 import requestPromise from 'request-promise';
 
-import constants from './constants';
+const { ACCOUNT_ID, ACCESS_TOKEN } = process.env;
 
 export default ({ url }) => {
+    const uri = url.replace('$ACCOUNT_ID', ACCOUNT_ID);
+
     const options = {
-        uri: `${constants.URL}${url}`,
+        uri,
         method: 'GET',
         headers: {
-            Authorization: `Bearer ${constants.ACCESS_TOKEN}`,
+            Authorization: `Bearer ${ACCESS_TOKEN}`,
         },
         json: true,
     };
+
     return requestPromise(options);
 };
